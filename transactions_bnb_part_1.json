@@ -1,0 +1,25 @@
+{
+    "version": "1.0",
+    "chainId": "56",
+    "createdAt": 1720154651660,
+    "meta": {
+        "name": "BNB Transfer",
+        "description": "",
+        "txBuilderVersion": "1.16.5",
+        "createdFromSafeAddress": "0x825EEf5eE88451A7FDEeE5d55eF41A1627125AB1",
+        "createdFromOwnerAddress": "",
+        "checksum": "0x0b10d552e93817088d8aba7076de118a6d6ec9836ac95399d23ea58e6e329c15"
+    },
+    "transactions": [
+        {
+            "to": "0x244CfEa6Fa9572e9f22Ea4c99ea65982EF57928A",
+            "value": "10000000000000000",
+            "data": null
+        },
+        {
+            "to": "0x773353E80d923361a37903Ea5Ec485cCD27F73d5",
+            "value": "10000000000000000",
+            "data": null
+        }
+    ]
+}
