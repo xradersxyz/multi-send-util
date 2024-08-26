@@ -2,7 +2,7 @@ import pandas as pd
 import json
 
 # 엑셀 파일에서 데이터 읽기 (문자열로 읽기 위해 dtype 지정)
-df = pd.read_excel('./data/recipients_us50_7winchallenge_round2.xlsx', dtype={'recipient': str, 'amount': str})
+df = pd.read_excel('./data/recipients_20XR_LOCK.xlsx', dtype={'recipient': str, 'amount': str})
 
 # JSON 템플릿 정의
 template = {
@@ -10,7 +10,7 @@ template = {
     "chainId": "56",
     "createdAt": 1720154651660,
     "meta": {
-        "name": "BNB Transfer",
+        "name": "BSC-XR",
         "description": "",
         "txBuilderVersion": "1.16.5",
         "createdFromSafeAddress": "0x825EEf5eE88451A7FDEeE5d55eF41A1627125AB1",
@@ -30,14 +30,34 @@ for idx, chunk in enumerate(chunks):
 
     for index, row in chunk.iterrows():
         transaction = {
-            "to": row['recipient'],
-            "value": row['amount'],  # 이미 문자열로 읽었기 때문에 변환 불필요
-            "data": None
+            "to": "0x5f78F4BFCb2b43bC174FE16A69a13945CEfA2978",  # XR 토큰 컨트랙트 주소
+            "value": "0",
+            "data": None,
+            "contractMethod": {
+                "inputs": [
+                    {
+                        "name": "to",
+                        "type": "address",
+                        "internalType": "address"
+                    },
+                    {
+                        "name": "value",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    }
+                ],
+                "name": "transfer",
+                "payable": False
+            },
+            "contractInputsValues": {
+                "to": row['recipient'],
+                "value": row['amount']  # 이미 문자열로 읽었기 때문에 변환 불필요
+            }
         }
         chunk_template['transactions'].append(transaction)
     
     # JSON 파일로 저장
-    file_name = f'transactions_bnb_part_{idx + 1}.json'
+    file_name = f'transactions_xr_part_{idx + 1}.json'
     with open(file_name, 'w') as json_file:
         json.dump(chunk_template, json_file, indent=4)
     
