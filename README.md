@@ -12,7 +12,7 @@ This project contains Python scripts to facilitate the generation of JSON transa
 
 ## Project Structure
 
-multisend/
+multisend
 ├── recipients.xlsx # Excel file with recipient addresses and amounts
 ├── generate_usdt_transfer_json.py # Script for USDT multi-send transaction generation
 ├── generate_bnb_transfer_json.py # Script for BNB multi-send transaction generation
